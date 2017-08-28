@@ -35,7 +35,7 @@ button.onclick = function()
           {
               var counter = xhttp.responseText;
               var span = document.getElementById('span');
-              span.innerHtml = counter.toString();
+              span.innerHtml = counter;
           }
       }
     };
