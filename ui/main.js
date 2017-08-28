@@ -3,12 +3,12 @@ console.log('Loaded!');
 
 var img = document.getElementById('madi');
 
-var marginLeft = 0;
+var newlocation = 0;
 
 var animate = function()
 {
-    marginLeft += 1;
-    img.css.marginLeft = marginLeft + 'px';
+    newlocation += 1;
+    img.style.marginLeft = newlocation + 'px';
 };
 
 img.onclick = function()
