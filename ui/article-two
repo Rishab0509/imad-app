@@ -1,0 +1,29 @@
+<html>
+    <head> 
+      <title> 
+        This is Article Two
+      </title> 
+      <meta name='viewport' content="width = device-width , initial-scale =1 " />
+    </head>
+    
+    <body>
+        <div>
+            <h1> This is a Heading</h1>
+            
+        </div>
+        
+        <hr/>
+        
+        <div>
+            Aug 28 2017
+        </div>
+        
+        <div>
+            <p> This is very first paragraph <br/> Please like it</p>
+            <p> This is the second paragraph <br/> Make sure to like it as well
+            </p>
+        </div>
+            
+    </body>
+    
+</html>
