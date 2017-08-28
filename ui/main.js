@@ -1,4 +1,4 @@
-console.log('Loaded!');
+/*console.log('Loaded!');
 
 
 var img = document.getElementById('madi');
@@ -15,7 +15,7 @@ img.onclick = function()
 {
     setInterval(animate , 50);
 };
-
+*/
 
 
 // Counter Code
