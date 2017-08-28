@@ -33,7 +33,7 @@ button.onclick = function()
           {
               var counter = xhttp.responseText;
               var span = document.getElementById('span');
-              span.innerHTML = counter;
+              span.innerHTML = counter.toString();
           }
       }
     };
