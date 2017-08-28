@@ -85,12 +85,16 @@ app.get('/', function (req, res) {
 app.get('/:article' , function(req,res) {
     
    var article_name = req.params.article ;
+   console.log(article_name);
    res.send(createTemplate(articles[article_name]));
    
 });
 
 
-/*app.get('/article-one' , function(req,res){
+/*
+NOT REQUIRED ANYMORE!!!! HAHAHAHAHHA
+
+app.get('/article-one' , function(req,res){
    
     res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
     
@@ -106,7 +110,10 @@ app.get('/article-three' , function(req,res){
    
    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
     
-});*/
+});
+
+
+*/
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
