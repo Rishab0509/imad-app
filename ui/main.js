@@ -7,7 +7,7 @@ var marginLeft = 0;
 
 var animate = function()
 {
-    newlocation += 1;
+    marginLeft += 1;
     img.css.marginLeft = marginLeft + 'px';
 };
 
