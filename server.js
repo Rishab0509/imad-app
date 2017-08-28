@@ -86,6 +86,7 @@ app.get('/:article' , function(req,res) {
     
    var article_name = req.params.article ;
    console.log(article_name);
+   console.log('HELLO');
    res.send(createTemplate(articles[article_name]));
    
 });
