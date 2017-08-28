@@ -36,8 +36,8 @@ button.onclick = function()
               span.innerHTML = counter;
           }
       }
-    };
-}
+    }
+};
 
 xhttp.open('GET', 'http://rshbbamrara.imad.hasura-app.io/counter' , true);
-xhttp.send(null);
+xhttp.send();
