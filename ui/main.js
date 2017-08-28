@@ -24,6 +24,7 @@ var button = document.getElementById('click');
 
 button.onclick = function()
 {
+    xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
       
       if(xhttp.readyState == 4)
