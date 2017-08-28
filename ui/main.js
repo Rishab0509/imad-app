@@ -40,7 +40,4 @@ button.onclick = function()
 }
 
 xhttp.open('GET', 'http://rshbbamrara.imad.hasura-app.io/counter' , true);
-xhttp.send();
-
-xhttp.open('GET' , 'http://rshbbamrara.imad.hasura-app.io/counter' , true);
-xhttp.send();
+xhttp.send(null);
