@@ -93,9 +93,9 @@ var list = [];
 
 app.get('/submit/:name' , function(req,res){
     
-    var name = req.params.name;
+    var myname = req.params.name;
     
-    list.push(name);
+    list.push(myname);
     res.send(JSON.stringify(list));
     res.end();
 });
