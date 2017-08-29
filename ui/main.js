@@ -63,6 +63,8 @@ Click.onclick = function(){
              
              for(var i=0 ; i<list.length ; i++){
                  
+                 console.log(list[i]);
+                 
                  inner+="<li>" + list[i] + "</li>";
                  
              }
