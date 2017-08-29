@@ -58,7 +58,8 @@ Click.onclick = function(){
       {
           if(xhttp.status == 200)
           {
-             var list = JSON.parse(xhttp.responseText);
+             var list = xhttp.responseText;
+             list = JSON.parse(list);
              
              for(var i=0 ; i<list.length ; i++){
                  
