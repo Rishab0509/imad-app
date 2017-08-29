@@ -89,6 +89,20 @@ app.get('/counter' , function(req,res){
 });
 
 
+var list = [];
+
+app.get('/submit/:name' , function(req,res){
+    
+    var name = req.params.name;
+    
+    list.push(name);
+    res.send(JSON.stringify(list));
+    res.end();
+});
+
+
+
+
 app.get('/:article' , function(req,res) {
     
    var article_name = req.params.article ;
