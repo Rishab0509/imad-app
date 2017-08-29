@@ -76,7 +76,8 @@ Click.onclick = function(){
     };
 
     var name = document.getElementById('name');
-    xhttp.open('GET', 'http://rshbbamrara.imad.hasura-app.io/submit/' + name , true);
+    nvalue = name.value;
+    xhttp.open('GET', 'http://rshbbamrara.imad.hasura-app.io/submit/' + nvalue , true);
     xhttp.send();
   
     
