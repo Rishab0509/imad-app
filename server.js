@@ -17,6 +17,10 @@ var pool = new Pool(config);
 var app = express();
 app.use(morgan('combined'));
 
+/*
+
+This is no longer needed cause we have copied everything in the database......
+
 var articles = {
     
     'article-one' : {
@@ -50,6 +54,8 @@ var articles = {
     }
     
 };
+
+*/
 
 var createTemplate = function(data){
 
@@ -94,9 +100,9 @@ app.get('/', function (req, res) {
 });
 
 
-app.get('/test-db' , function(req,res){
+app.get('/test/:articlename' , function(req,res){
     
-    pool.query('SELECT * FROM "Articles"' ,  function(err,result){
+    pool.query('SELECT * FROM NewArticles where Article_Name = ' + req.params.articlename ,  function(err,result){
        
        if(err){
            res.status(500).send(err.toString());
@@ -104,7 +110,7 @@ app.get('/test-db' , function(req,res){
        
        else
        {
-           res.send(JSON.stringify(result.rows));
+           res.send(JSON.stringify(result.rows[0]));
        }
         
     });
