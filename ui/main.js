@@ -42,3 +42,39 @@ button.onclick = function()
     xhttp.open('GET', 'http://rshbbamrara.imad.hasura-app.io/counter' , true);
     xhttp.send();
 };
+
+
+//Get value back
+
+var Click = document.getElementById('submit');
+
+Click.onclick = function(){
+    
+  var xhttp = new XMLHttpRequest();
+  var inner = '';
+    xhttp.onreadystatechange = function(){
+      
+      if(xhttp.readyState == 4)
+      {
+          if(xhttp.status == 200)
+          {
+             var list = JSON.parse(xhttp.responseText);
+             
+             for(var i=0 ; i<list.length ; i++){
+                 
+                 inner+="<li>" + list[i] + "</li>";
+                 
+             }
+             
+             var ulist = document.getElementById("list");
+             ulist.innerHTML = inner;
+          }
+      }
+    };
+
+    var name = document.getElementById('name');
+    xhttp.open('GET', 'http://rshbbamrara.imad.hasura-app.io/submit/' + name , true);
+    xhttp.send();
+  
+    
+};
