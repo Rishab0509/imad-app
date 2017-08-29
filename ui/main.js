@@ -65,7 +65,7 @@ Click.onclick = function(){
                  
                  console.log(list[i]);
                  
-                 inner+="<li>" + list[i] + "</li>";
+                 inner+="<li>" + list[i].toString() + "</li>";
                  
              }
              
