@@ -85,6 +85,7 @@ Click.onclick = function(){
 //Login Page
 
 var login = document.getElementById('login_btn');
+console.log("yeah");
 
 login.onclick = function(){
     
