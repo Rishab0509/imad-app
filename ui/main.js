@@ -84,35 +84,38 @@ Click.onclick = function(){
 
 //Login Page
 
-var login = document.getElementById('log');
-console.log("yeah");
-
-login.onclick = function(){
+window.onload = function(){
+    var login = document.getElementById('log');
+    console.log("yeah");
     
-    var xhttp = new XMLHttpRequest();
+    login.onclick = function(){
+        
+        var xhttp = new XMLHttpRequest();
+        
+        xhttp.onreadystatechange = function(){
+          
+          if(xhttp.readyState == 4)
+          {
+              if(xhttp.status == 200)
+              {
+                      alert("user logged in successfully!!");
+              }
+              else
+              {
+                  alert("oooo.....");
+              }
+                 
+          }
+        };
     
-    xhttp.onreadystatechange = function(){
-      
-      if(xhttp.readyState == 4)
-      {
-          if(xhttp.status == 200)
-          {
-                  alert("user logged in successfully!!");
-          }
-          else
-          {
-              alert("oooo.....");
-          }
-             
-      }
+        var name = document.getElementById('username').value;
+        var passwd = document.getElementById('password').value;
+        console.log(name);
+        console.log(passwd);
+        xhttp.open('POST', 'http://rshbbamrara.imad.hasura-app.io/login', true);
+        xhttp.setRequestHeader('Content-Type' , 'application/json');
+        xhttp.send(JSON.stringify({username : name , password : passwd}));
+        
     };
 
-    var name = document.getElementById('username').value;
-    var passwd = document.getElementById('password').value;
-    console.log(name);
-    console.log(passwd);
-    xhttp.open('POST', 'http://rshbbamrara.imad.hasura-app.io/login', true);
-    xhttp.setRequestHeader('Content-Type' , 'application/json');
-    xhttp.send(JSON.stringify({username : name , password : passwd}));
-    
 };
