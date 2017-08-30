@@ -80,5 +80,31 @@ Click.onclick = function(){
     xhttp.open('GET', 'http://rshbbamrara.imad.hasura-app.io/submit/' + nvalue , true);
     xhttp.send();
   
+};
+
+//Login Page
+
+var login = document.getElementById('login_btn');
+
+login.onclick = function(){
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+      
+      if(xhttp.readyState == 4)
+      {
+          if(xhttp.status == 200)
+          {
+                  
+          }
+             
+      }
+    };
+
+    var name = document.getElementById('username').value;
+    var passwd = document.getElementById('password').value;
+    xhttp.open('POST', 'http://rshbbamrara.imad.hasura-app.io/login', true);
+    xhttp.createHeader({'Content-Type' : 'application/json'});
+    xhttp.send(JSON.stringify({username : name , password : passwd}));
     
 };
