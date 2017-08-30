@@ -89,6 +89,7 @@ var login = document.getElementById('login_btn');
 login.onclick = function(){
     
     var xhttp = new XMLHttpRequest();
+    
     xhttp.onreadystatechange = function(){
       
       if(xhttp.readyState == 4)
@@ -96,6 +97,10 @@ login.onclick = function(){
           if(xhttp.status == 200)
           {
                   alert("user logged in successfully!!");
+          }
+          else
+          {
+              alert("oooo.....");
           }
              
       }
