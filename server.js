@@ -20,7 +20,7 @@ var app = express();
 app.use(morgan('combined'));
 app.use(bodyparser.json());
 
-var hash = function(secretvalue){
+var hash = function(secretvalue , salt){
    var hashedvalue = crypto.pbkdf2Sync(secretvalue,salt,10000,512,'sha512').toString();
    
    return ["pbkdf2" , 10000 , salt , hashedvalue].join("$");
@@ -33,7 +33,7 @@ app.post('/create-user' , function(req,res){
     var password = req.body.password;
     
     var salt = crypto.randomBytes(128).toString('hex');
-    var dbvalue = hash(password);
+    var dbvalue = hash(password , salt);
     
     pool.query('INSERT INTO userinfo (username,password) VALUES ($1,$2)' , [username,dbvalue] , function(err,data){
         
