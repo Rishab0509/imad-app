@@ -104,7 +104,7 @@ login.onclick = function(){
     var name = document.getElementById('username').value;
     var passwd = document.getElementById('password').value;
     xhttp.open('POST', 'http://rshbbamrara.imad.hasura-app.io/login', true);
-    xhttp.createHeader({'Content-Type' : 'application/json'});
+    xhttp.setRequestHeader({'Content-Type' : 'application/json'});
     xhttp.send(JSON.stringify({username : name , password : passwd}));
     
 };
