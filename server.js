@@ -4,7 +4,7 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyparser = require('body-parser');
-var session = require('session');
+var session = require('express-session');
 
 var config = {
     
