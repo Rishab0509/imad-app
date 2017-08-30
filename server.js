@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+var crypto = require('crypto');
 
 var config = {
     
@@ -16,6 +17,37 @@ var pool = new Pool(config);
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyparser.json());
+
+var hash = function(secretvalue){
+   var hashedvalue = crypto.pbkdf2Sync(secretvalue,salt,10000,512,'sha512').toString();
+   
+   return ["pbkdf2" , 10000 , salt , hashedvalue].join("$");
+    
+} ;
+
+app.post('/create-user' , function(req,res){
+    
+    var username = req.body.username;
+    var password = req.body.password;
+    
+    var salt = crypto.randomBytes(128).toString('hex');
+    var dbvalue = hash(password);
+    
+    pool.query('INSERT INTO userinfo (username,password) VALUES ($1,$2)' , [username,dbvalue] , function(err,data){
+        
+        if(err){
+           res.status(500).send(err.toString());
+       }
+       
+       else
+       {
+           res.send("User created successfully...");
+       }
+       
+    });
+});
+
 
 /*
 
@@ -116,7 +148,6 @@ app.get('/test/:articlename' , function(req,res){
     });
     
 });
-
 
 
 var counter = 0;
