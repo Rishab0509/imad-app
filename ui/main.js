@@ -95,7 +95,7 @@ login.onclick = function(){
       {
           if(xhttp.status == 200)
           {
-                  
+                  alert("user logged in successfully!!");
           }
              
       }
