@@ -4,6 +4,7 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyparser = require('body-parser');
+var session = require('session');
 
 var config = {
     
@@ -19,6 +20,11 @@ var pool = new Pool(config);
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyparser.json());
+app.use(session ({
+    
+    secretvalue : "SomeRandomValue",
+    cookie : {maxAge : 1000*30*60*24*30}
+}));
 
 var hash = function(secretvalue , salt){
    var hashedvalue = crypto.pbkdf2Sync(secretvalue,salt,10000,512,'sha512');
@@ -55,6 +61,9 @@ app.post('/login' , function(req,res){
                var hashedpasswd = hash(password , salt);
                
                if(hashedpasswd === dbstring){
+                   
+                   req.session.auth = {userId : result.rows[0].id};
+                   
                    res.send("Credentials correct...");
                }
                else{
@@ -65,6 +74,18 @@ app.post('/login' , function(req,res){
        }
        
     });
+    
+});
+
+
+app.get('/check' , function(req,res)
+{
+    if(req.session && req.session.auth && req.session.auth.userId){
+        res.send("You are successfully logged in");
+    }
+    else{
+        res.send("You are logged off...");
+    }
     
 });
 
