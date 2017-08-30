@@ -21,7 +21,7 @@ app.use(morgan('combined'));
 app.use(bodyparser.json());
 
 var hash = function(secretvalue , salt){
-   var hashedvalue = crypto.pbkdf2Sync(secretvalue,salt,10000,512,'sha512').toString();
+   var hashedvalue = crypto.pbkdf2Sync(secretvalue,salt,10000,512,'sha512');
    
    return ["pbkdf2" , 10000 , salt , hashedvalue].join("$");
     
