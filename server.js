@@ -27,6 +27,47 @@ var hash = function(secretvalue , salt){
     
 } ;
 
+
+app.post('/login' , function(req,res){
+   
+   var username = req.body.username;
+   var password = req.body.password;
+    
+    pool.query('SELECT FROM userinfo WHERE username = $1 ' , [username] , function(err,data){
+        
+        if(err){
+           res.status(500).send(err.toString());
+       }
+       
+       else
+       {
+           if(data.rows.length === 0)
+           {
+               console.log("No user found");
+           }
+           
+           else
+           {
+               var dbstring = data.rows[0].password;
+               
+               var salt = dbstring.split('$')[2];
+               
+               var hashedpasswd = hash(password , salt);
+               
+               if(hashedpasswd == dbstring){
+                   res.send("Credentials correct...");
+               }
+               else{
+                   res.status(403).send('invalid usename/password');
+               }
+               
+           }
+       }
+       
+    });
+    
+});
+
 app.post('/create-user' , function(req,res){
     
     var username = req.body.username;
