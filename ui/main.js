@@ -111,7 +111,7 @@ login.onclick = function(){
     console.log(name);
     console.log(passwd);
     xhttp.open('POST', 'http://rshbbamrara.imad.hasura-app.io/login', true);
-    xhttp.setRequestHeader('Content-Type' : 'application/json');
+    xhttp.setRequestHeader('Content-Type' , 'application/json');
     xhttp.send(JSON.stringify({username : name , password : passwd}));
     
 };
